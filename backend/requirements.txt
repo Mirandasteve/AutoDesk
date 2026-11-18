@@ -48,3 +48,4 @@ pytest-cov==6.0.0
 Faker==33.1.0
 # --- Production Server ------------------------------------------------------
 gunicorn
+huggingface-hub

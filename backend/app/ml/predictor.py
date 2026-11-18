@@ -39,6 +39,8 @@ import threading
 import time
 from typing import Any, Dict, List, Optional, Tuple
 
+from huggingface_hub import snapshot_download
+
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
@@ -210,29 +212,36 @@ class TicketClassifier:
 
     # -- loading ----------------------------------------------------------
     def load(self) -> bool:
-        """
-        Load the checkpoint. Returns ``True`` when the real model is active.
-
-        A failure is recorded in :attr:`load_error` and, when
-        ``allow_fallback`` is set, the keyword classifier takes over.
-        """
+        """Load the local checkpoint or download it from Hugging Face."""
         try:
             from transformers import AutoTokenizer, DistilBertForSequenceClassification
             import torch
 
-            if not os.path.isdir(self.model_path):
-                raise FileNotFoundError(f"model directory not found: {self.model_path}")
-            config_path = os.path.join(self.model_path, "config.json")
-            if not os.path.exists(config_path):
-                raise FileNotFoundError(f"missing config.json in {self.model_path}")
+            if os.path.isdir(self.model_path):
+                resolved_model_path = self.model_path
+            else:
+                logger.info(
+                    "Downloading model from Hugging Face: %s",
+                    self.model_path,
+                )
+                resolved_model_path = snapshot_download(
+                    repo_id=self.model_path,
+                    repo_type="model",
+                )
 
-            logger.info("Loading DistilBERT checkpoint from %s", self.model_path)
-            self.tokenizer = AutoTokenizer.from_pretrained(self.model_path)
-            model = DistilBertForSequenceClassification.from_pretrained(self.model_path)
+            logger.info(
+                "Loading DistilBERT checkpoint from %s",
+                resolved_model_path,
+            )
+            self.tokenizer = AutoTokenizer.from_pretrained(resolved_model_path)
+            model = DistilBertForSequenceClassification.from_pretrained(
+                resolved_model_path
+            )
 
+            self.model_path = resolved_model_path
             device = torch.device(self.device_name)
             model.to(device)
-            model.eval()  # disables dropout - inference mode
+            model.eval()
             self.model = model
 
             self.id_to_label = self._read_label_mappings()
@@ -248,9 +257,11 @@ class TicketClassifier:
             self.model = None
             self.tokenizer = None
             self._load_error = f"{type(exc).__name__}: {exc}"
-            logger.error("Could not load DistilBERT checkpoint (%s)", exc)
+            logger.exception("Could not load DistilBERT checkpoint (%s)", exc)
             if not self.allow_fallback:
-                logger.error("ML_ALLOW_FALLBACK is disabled - predictions will fail.")
+                logger.error(
+                    "ML_ALLOW_FALLBACK is disabled - predictions will fail."
+                )
             return False
 
     def _read_label_mappings(self) -> Dict[int, str]:
@@ -475,12 +486,11 @@ def _backend_root() -> str:
 
 
 def _resolve_model_path(model_path: Optional[str] = None) -> str:
-    """
-    Resolve ``ML_MODEL_PATH`` to an absolute directory.
+    """Resolve a local model directory or preserve a Hugging Face repo ID.
 
-    Relative paths are resolved against the ``backend/`` directory so the app
-    behaves the same whether it is started with ``flask run``, ``python
-    run.py`` or from VS Code with a different working directory.
+    Relative local paths are resolved against ``backend/``. A value such as
+    ``Mirandasteve/autodesk-ticket-classifier`` is returned unchanged so
+    ``snapshot_download`` can use it as a repository ID.
     """
     backend_root = _backend_root()
     candidate = model_path or os.getenv("ML_MODEL_PATH") or "app/ml/saved_model"
@@ -489,17 +499,23 @@ def _resolve_model_path(model_path: Optional[str] = None) -> str:
         return candidate
 
     from_root = os.path.normpath(os.path.join(backend_root, candidate))
-    if os.path.exists(from_root):
+    if os.path.isdir(from_root):
         return from_root
 
-    # Last resort: relative to the current working directory (covers
-    # `python -m app.ml.predictor` launched from inside backend/).
     from_cwd = os.path.abspath(candidate)
-    if os.path.exists(from_cwd):
+    if os.path.isdir(from_cwd):
         return from_cwd
 
+    # A Hugging Face repo ID has the form "owner/repository". Keep it as-is.
+    if "/" in candidate and "\\" not in candidate:
+        logger.info("Using Hugging Face model repository: %s", candidate)
+        return candidate
+
     logger.warning(
-        "ML_MODEL_PATH %r not found; tried %s and %s", candidate, from_root, from_cwd
+        "ML_MODEL_PATH %r was not found locally; tried %s and %s",
+        candidate,
+        from_root,
+        from_cwd,
     )
     return from_root
 
