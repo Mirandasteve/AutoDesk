@@ -1,0 +1,229 @@
+text,category,label,priority
+the power adapter on my laptop gets very hot. the problem started right after the machine was moved to my desk.. i am in the office today and can be at my desk if needed..,Hardware,1,Medium
+the vpn client says the connection was refused. the company resource i need is only available through the vpn.. please resolve this as soon as possible as i am blocked..,VPN,4,High
+my vpn disconnects whenever i switch wifi networks. i need to reach the payroll system today to finish a task.. this has been happening intermittently over the last week..,VPN,4,Low
+the bandwidth in the meeting room is unusable for video calls. the internet works in the meeting room but not at my desk..,Network,2,Low
+packet loss to the data centre is making my work impossible. i tried the network troubleshooter and it did not resolve anything..,Network,2,Low
+the file i own transferred to another department and i lost access. my manager has approved the request but it has not taken effect.. please advise on the next step i should take..,Access,5,Low
+my keyboard is not responding. it happens regardless of which application i am working in.. please resolve this as soon as possible as i am blocked..,Hardware,1,High
+packet loss to the data centre is making my work impossible. the issue seems to come and go throughout the day.. please let me know if you need any further information from my side..,Network,2,Medium
+"i need permission to install software on my laptop. i only need read access, not full editing rights.. i need this working before my next client meeting..",Access,5,Medium
+slack notifications stopped arriving on my desktop. the feature worked last week and simply stopped working since.. i have attached a screenshot of the error message..,Software,0,Medium
+the vpn cannot resolve internal hostnames once connected. the client worked on the office wifi but fails on my home connection.. i need this working before my next client meeting..,VPN,4,Medium
+the internal reporting portal shows a server error. it started failing right after the quarterly software rollout..,Software,0,Medium
+the docking station does not connect to any display. there is a physical crack or mark on the part that i can see..,Hardware,1,Low
+the document i need returns an access denied error. the new starter process should have granted me this automatically.. i have already checked with my colleagues and they are fine..,Access,5,Medium
+my laptop keyboard has several dead keys. the machine is overheating and the thermal fan runs constantly.. i would appreciate an update once this is resolved..,Hardware,1,Low
+the vpn works on the office network but not from home. i cannot reach the internal file share through the tunnel.. i have written down everything exactly as it appears on screen..,VPN,4,Medium
+my vpn connects without internet access at all. i am working from home today and need the internal systems.. i am happy to try any steps you suggest..,VPN,4,Low
+my headset microphone is not picking up my voice. it affects the battery life significantly during a normal day of work.. this has been happening intermittently over the last week..,Hardware,1,Low
+windows update breaks an application i use daily. it affects my daily work so i would like this looked at quickly.. please advise on the next step i should take..,Software,0,Low
+notion desktop application does not sync my changes. the feature worked last week and simply stopped working since.. this is a complete outage and the entire floor has stopped working..,Software,0,Critical
+the vpn connection is extremely slow during peak hours. the tunnel connects but all traffic bypasses the tunnel.. please treat this as time sensitive for my team..,VPN,4,Low
+the vpn client fails with an authentication error. the same profile works on my personal laptop from home.. the it self service portal did not help with this issue..,VPN,4,Medium
+i am unable to sign in after the password policy change. the login page loads but signing in immediately returns me back.. my request number from the portal is referenced below..,Login,3,High
+powerpoint freezes when i play a slide transition. the same file opens correctly on my colleague's machine..,Software,0,Medium
+the webcam on my laptop shows a black screen. it survived a restart and a complete shutdown of the machine..,Hardware,1,Low
+my laptop cannot connect to the office wifi. the internet works in the meeting room but not at my desk.. the behaviour looks identical to a known issue in the release notes..,Network,2,Medium
+the vpn client fails with an authentication error. the vpn server may be refusing the connection because of my account.. please advise on the next step i should take..,VPN,4,Low
+windows update breaks an application i use daily. the same application works fine on my personal laptop.. this has been happening intermittently over the last week..,Software,0,Low
+i changed my password and now nothing works. the password policy requires a character i cannot type on this keyboard.. i have tried both on the laptop and on the office desktop..,Login,3,Medium
+the vpn shows connected but no company drive is available. it started failing right after the weekend maintenance..,VPN,4,Low
+the teams application will not start on my laptop. i get a stack trace instead of the normal output window.. i am currently working remotely so this blocks my day..,Software,0,Low
+notion desktop application does not sync my changes. the feature worked last week and simply stopped working since.. several of us in the team are affected by the same major issue..,Software,0,Critical
+i need permission to install software on my laptop. the error message clearly says that i do not have permission.. please treat this as time sensitive for my team..,Access,5,Medium
+the vpn shows connected but no company drive is available. i need to reach the payroll system today to finish a task..,VPN,4,Low
+the usb port on my laptop stopped recognising devices. everything on screen works but no sound comes out of the speakers.. i can provide remote access if the technician needs it..,Hardware,1,Low
+the office wifi is extremely slow today. the cable is seated properly and the port light is lit.. i have tried both on the laptop and on the office desktop..,Network,2,Low
+i cannot open the restricted customer data folder. i can see the folder name but the contents are not accessible.. i need this working before my next client meeting..,Access,5,Medium
+the file i own transferred to another department and i lost access. it is a confidential folder so the access has to be approved first.. i am happy to try any steps you suggest..,Access,5,Low
+the admin console denies access even for my own profile. my manager has approved the request but it has not taken effect..,Access,5,Low
+the bandwidth in the meeting room is unusable for video calls. the issue seems to come and go throughout the day.. my request number from the portal is referenced below..,Network,2,Medium
+the docking station does not connect to any display. the problem started this morning and it happens every single time..,Hardware,1,Medium
+i cannot ping the internal file server from my laptop. the problem started this morning and affects my whole desk..,Network,2,Medium
+the vpn works on the office network but not from home. the same profile works on my personal laptop from home.. my manager is copied on this request for visibility..,VPN,4,Low
+my multi factor authentication code is never accepted. the login screen shows an error the moment i press enter..,Login,3,Medium
+"my database client cannot connect to the reporting server. every time i close the program it asks me to send a crash report.. this is urgent, i cannot work and the department is unavailable..",Software,0,High
+sublime text shows an encoding error in every file. running the program as administrator does not help at all.. my manager is copied on this request for visibility..,Software,0,Medium
+the vpn shows connected but no company drive is available. the client reports an invalid certificate for the gateway.. my request number from the portal is referenced below..,VPN,4,Low
+i cannot authenticate to the internal reporting system. i have been locked out since yesterday evening.. my manager is copied on this request for visibility..,Login,3,Medium
+the vpn client says the connection was refused. the client gives an authentication failure with my normal password.. the problem is reproducible every single time i try..,VPN,4,Medium
+the vpn client says the connection was refused. the connection drops whenever i run a long download..,VPN,4,Low
+the webcam on my laptop shows a black screen. the screen works when docked but not on the laptop panel.. i can provide remote access if the technician needs it..,Hardware,1,Low
+the internal reporting portal shows a server error. the rest of the machine works fine and the internet is normal..,Software,0,Medium
+the office wireless network does not show my laptop at all. the whole floor lost network connectivity for a few minutes.. the problem is reproducible every single time i try..,Network,2,Medium
+my computer makes a clicking noise from the hard disk. the hardware fault appears as soon as i plug in the external device.. i have tried both on the laptop and on the office desktop..,Hardware,1,Low
+the password reset email never arrives. the password field resets itself before i finish typing.. please treat this as time sensitive for my team..,Login,3,Low
+i need write access to the shared documentation. i have read access but cannot download or export the files.. several of us in the team are affected by the same major issue..,Access,5,Critical
+windows defender keeps quarantining a file i need. the problem appears both on my laptop and on the office desktop.. i need this working before my next client meeting..,Software,0,Medium
+the domain login rejects my account every single time. the sign-in prompt on my windows machine rejects the domain account.. the it self service portal did not help with this issue..,Login,3,Medium
+the internal shared drive is not reachable from my machine. the access point near my desk seems to be offline.. i would appreciate an update once this is resolved..,Network,2,Low
+my laptop connects to wifi but has no internet. the support page mentions an ongoing issue in this building.. i have already checked with my colleagues and they are fine..,Network,2,Medium
+my account is suspended and i do not know why. i am unable to use any of the internal systems because of this.. the it self service portal did not help with this issue..,Login,3,Medium
+the password reset link always says it has expired. i have been locked out since yesterday evening..,Login,3,Low
+i am unable to sign in after the password policy change. i have been locked out since yesterday evening..,Login,3,Medium
+onenote will not sync my notebooks to the company account. i get a stack trace instead of the normal output window.. the it self service portal did not help with this issue..,Software,0,Medium
+i cannot download the vpn profile onto my new phone. the client gives an authentication failure with my normal password.. nothing was installed or changed by me before this happened..,VPN,4,Medium
+the external hard disk is not detected by my laptop. the hardware fault appears as soon as i plug in the external device..,Hardware,1,Low
+"i am locked out of my account after too many attempts. i have tried three different browsers and the same thing happens.. this is urgent, i cannot work and the department is unavailable..",Login,3,High
+my account asks for a password change on every single login. the login screen shows an error the moment i press enter.. nothing was installed or changed by me before this happened..,Login,3,Medium
+i get disconnected from vpn when using the printer remotely. the client reports an invalid certificate for the gateway.. the it self service portal did not help with this issue..,VPN,4,Medium
+my account gets locked after three login attempts. every internal application gives me the same authentication error..,Login,3,Medium
+my laptop connects to wifi but has no internet. it affects several of us on the same floor since this morning.. nothing was installed or changed by me before this happened..,Network,2,Medium
+i get no internet access even though wifi is connected. it happens with both the wired and the wireless connection.. please resolve this as soon as possible as i am blocked..,Network,2,High
+"the vpn tunnel drops every fifteen minutes. the tunnel connects but all traffic bypasses the tunnel.. this is urgent, i cannot work and the department is unavailable..",VPN,4,High
+the vpn client says the connection was refused. the vpn icon stays on connecting and never completes.. the it self service portal did not help with this issue..,VPN,4,Medium
+i cannot download the vpn profile onto my new phone. the vpn server may be refusing the connection because of my account.. my manager is copied on this request for visibility..,VPN,4,Medium
+i need access to the production database for my project. the system administrator granted it directly in the database.. kindly look at this at the earliest convenience..,Access,5,Low
+i cannot approve purchase requests in the procurement tool. i need to complete an audit that requires these documents.. i am in the office today and can be at my desk if needed..,Access,5,Medium
+the speakers in my monitor produce no sound at all. i hear a clicking or grinding noise coming from the machine..,Hardware,1,Low
+i get no internet access even though wifi is connected. the access point near my desk seems to be offline.. kindly look at this at the earliest convenience..,Network,2,Low
+my laptop will not charge even with the original charger. the device is only two years old and was working fine until now.. please let me know if you need any further information from my side..,Hardware,1,Low
+i am unable to sign in after the password policy change. the login page loads but signing in immediately returns me back.. i need this working before my next client meeting..,Login,3,Critical
+the vpn software is stuck on the connecting screen. i have tried disconnecting and reconnecting several times.. i am currently working remotely so this blocks my day..,VPN,4,Low
+the company antivirus software blocks a legitimate application. there is a yellow warning triangle in the corner of the window.. please let me know if you need any further information from my side..,Software,0,Low
+i need read access to the analytics dashboard. access was granted to the wrong user id for my account.. the behaviour looks identical to a known issue in the release notes..,Access,5,Medium
+the document i need returns an access denied error. i was moved to this team last week and still have no permissions.. the behaviour looks identical to a known issue in the release notes..,Access,5,Medium
+the vpn tunnel drops every fifteen minutes. the client will not accept the certificate warning prompt.. please let me know if you need any further information from my side..,VPN,4,Low
+other colleagues in my department cannot connect either. it worked fine yesterday and nothing was changed on my machine.. i tried the obvious steps from the knowledge base first..,Network,2,Medium
+the file i own transferred to another department and i lost access. the application hides the menu option because of my current role.. my manager is copied on this request for visibility..,Access,5,Low
+i need access to the production database for my project. it is a confidential folder so the access has to be approved first.. i have already checked with my colleagues and they are fine..,Access,5,Medium
+my account says it is locked and i cannot unlock it. the system says my credentials are invalid for both domains.. let me know if you need me to try anything else..,Login,3,Medium
+i cannot access the printer queue folder from my laptop. the system administrator granted it directly in the database..,Access,5,Medium
+the login page keeps spinning and never finishes. the sign-in prompt on my windows machine rejects the domain account.. i can provide remote access if the technician needs it..,Login,3,Low
+i changed my password and now nothing works. someone may have tried to log in to my account many times.. my request number from the portal is referenced below..,Login,3,Low
+my account gets locked after three login attempts. my account shows as suspended and support has not responded yet.. i have included the exact error text for reference..,Login,3,Medium
+my vpn connects but i cannot reach any internal website. i have tried disconnecting and reconnecting several times.. several of us in the team are affected by the same major issue..,VPN,4,Critical
+the docking station does not connect to any display. everything on screen works but no sound comes out of the speakers..,Hardware,1,Low
+the front panel usb ports on my desktop do nothing. everything on screen works but no sound comes out of the speakers.. this started during the morning and has not improved since..,Hardware,1,Low
+the temporary password given to me does not work. the mobile authenticator app does not show any code for me.. let me know if you need me to try anything else..,Login,3,Medium
+the finance system says i do not have permission. the access rights i had were lost after the account migration.. my request number from the portal is referenced below..,Access,5,Low
+my usb headset disconnects every few minutes. my colleague with the same model of machine has no problem at all.. i have included the exact error text for reference..,Hardware,1,Medium
+the whole office network is down this morning. i can ping my own machine but not any other device on the network..,Network,2,Low
+i cannot reach any website from my office desktop. the problem started after the office network maintenance window.. please treat this as time sensitive for my team..,Network,2,Medium
+my usb headset disconnects every few minutes. the machine reports a disk error and it is very slow to boot.. nothing was installed or changed by me before this happened..,Hardware,1,Medium
+python script fails with a module not found error. the same application works fine on my personal laptop.. i tried the obvious steps from the knowledge base first..,Software,0,Medium
+i cannot access the printer queue folder from my laptop. i need this access to complete my assigned work this week.. i have tried both on the laptop and on the office desktop..,Access,5,Medium
+visual studio code cannot find my project folder. this happens with every document i try to open.. i can provide remote access if the technician needs it..,Software,0,Medium
+my wired network card is not detected in the system. i hear a clicking or grinding noise coming from the machine.. please let me know if you need any further information from my side..,Hardware,1,Low
+the internal shared drive is not reachable from my machine. the whole floor lost network connectivity for a few minutes.. i have tried both on the laptop and on the office desktop..,Network,2,Medium
+the office printer prints blank pages. i hear a clicking or grinding noise coming from the machine.. i am happy to escalate this further if that helps..,Hardware,1,Low
+my laptop cannot see the shared printer on the network. the proxy is configured automatically and blocks external traffic..,Network,2,Medium
+the temporary password given to me does not work. it looks like my username has an extra character in it somewhere.. i am in the office today and can be at my desk if needed..,Login,3,Medium
+my password stopped working this morning. the login page loads but signing in immediately returns me back.. please resolve this as soon as possible as i am blocked..,Login,3,High
+the fingerprint reader on my laptop never responds. the device works on a different computer so the fault is with the device.. i am currently working remotely so this blocks my day..,Hardware,1,Low
+the vpn drops whenever i connect to a conference call. it worked fine until yesterday and nothing was changed on my machine.. i am currently working remotely so this blocks my day..,VPN,4,Low
+the password reset link always says it has expired. the mobile authenticator app does not show any code for me.. i have tried both on the laptop and on the office desktop..,Login,3,Low
+the vpn client fails with an authentication error. my laptop was reimaged and the vpn profile was never restored..,VPN,4,Medium
+autodesk revit crashes when i open a shared project. the application keeps popping up a license activation dialog.. please resolve this as soon as possible as i am blocked..,Software,0,High
+the browser cannot play embedded videos on the intranet. the same file opens correctly on my colleague's machine.. several of us in the team are affected by the same major issue..,Software,0,Critical
+my database client cannot connect to the reporting server. the problem appears both on my laptop and on the office desktop.. let me know the earliest time you can look at this..,Software,0,Medium
+the bandwidth in the meeting room is unusable for video calls. other people in the same area are complaining about the same thing.. let me know if you need me to try anything else..,Network,2,Low
+i cannot sign in to my laptop after the weekend. i need this resolved before the start of the working day.. let me know if you need me to try anything else..,Login,3,Medium
+the vpn profile on my laptop is missing after the reimage. i cannot reach the internal file share through the tunnel.. i am in the office today and can be at my desk if needed..,VPN,4,Medium
+network shares on the file server time out constantly. i have tried connecting from home and it works perfectly there..,Network,2,Low
+notion desktop application does not sync my changes. the error appears consistently and there is no way to bypass it.. the behaviour looks identical to a known issue in the release notes..,Software,0,Medium
+the ethernet cable port on my laptop is physically damaged. the device shows up in the system but no data is ever transferred.. nothing was installed or changed by me before this happened..,Hardware,1,Low
+my macro in excel stopped working after the update. every time i close the program it asks me to send a crash report.. the behaviour looks identical to a known issue in the release notes..,Software,0,Medium
+slack notifications stopped arriving on my desktop. every time i close the program it asks me to send a crash report.. let me know if you need me to try anything else..,Software,0,Medium
+the browser cannot play embedded videos on the intranet. the application hangs and i have to force quit it several times a day.. my request number from the portal is referenced below..,Software,0,Medium
+packet loss to the data centre is making my work impossible. i tried the network troubleshooter and it did not resolve anything.. please treat this as time sensitive for my team..,Network,2,Low
+i need access to the production database for my project. i need this access to complete my assigned work this week.. i would appreciate an update once this is resolved..,Access,5,Low
+my account says it is locked and i cannot unlock it. the login screen shows an error the moment i press enter.. my manager is copied on this request for visibility..,Login,3,Medium
+my account says it is locked and i cannot unlock it. it has worked every day until this morning with no changes.. please treat this as time sensitive for my team..,Login,3,Medium
+"autodesk revit crashes when i open a shared project. reinstalling the application did not resolve the issue.. this is urgent, i cannot work and the department is unavailable..",Software,0,High
+my account gets locked after three login attempts. the mobile authenticator app does not show any code for me.. i have tried both on the laptop and on the office desktop..,Login,3,Low
+my computer makes a clicking noise from the hard disk. it affects the battery life significantly during a normal day of work.. please let me know if you need any further information from my side..,Hardware,1,Low
+wifi disconnects from my laptop every few minutes. the support page mentions an ongoing issue in this building.. i have written down everything exactly as it appears on screen..,Network,2,Medium
+the vpn session ends instantly on the mobile network. the mobile network gives a different error than home wifi does.. i have written down everything exactly as it appears on screen..,VPN,4,Medium
+notion desktop application does not sync my changes. the file i am working on is stored on the network share.. the it self service portal did not help with this issue..,Software,0,Medium
+the pin for my domain account is rejected at the sign-in prompt. the mobile authenticator app does not show any code for me.. i am happy to escalate this further if that helps..,Login,3,Low
+my keyboard is not responding. the machine is overheating and the thermal fan runs constantly.. this is a complete outage and the entire floor has stopped working..,Hardware,1,Critical
+the vpn client crashes immediately after i start it. i am behind a home router that may be filtering the traffic.. please treat this as time sensitive for my team..,VPN,4,High
+the guest wifi password does not work for my device. even the network printer is unreachable from my machine.. i have attached a screenshot of the error message..,Network,2,Medium
+the vpn tunnel drops every fifteen minutes. the tunnel connects but all traffic bypasses the tunnel.. kindly look at this at the earliest convenience..,VPN,4,Low
+the file i own transferred to another department and i lost access. i need this access to complete my assigned work this week.. i have included the exact error text for reference..,Access,5,Medium
+my account gets locked after three login attempts. i changed my password last week and it may not have saved.. my request number from the portal is referenced below..,Login,3,Low
+my group membership is missing so i see access denied. i cannot assign tasks in the tool because of my role..,Access,5,Medium
+my laptop shows limited network connectivity with an x mark. my throughput has dropped to almost nothing during the day.. i have attached a screenshot of the error message..,Network,2,Medium
+i am not able to access the design repository. i need to approve items myself as part of my new responsibilities.. several of us in the team are affected by the same major issue..,Access,5,Critical
+the barcode scanner at my desk does not read any barcode. the problem started this morning and it happens every single time.. i have written down everything exactly as it appears on screen..,Hardware,1,Medium
+my laptop fan makes a very loud noise. it affects the battery life significantly during a normal day of work.. please resolve this as soon as possible as i am blocked..,Hardware,1,High
+the finance system says i do not have permission. i was moved to this team last week and still have no permissions.. this is a complete outage and the entire floor has stopped working..,Access,5,Critical
+my laptop cannot see the shared printer on the network. the connection drops roughly every ten minutes without warning.. nothing was installed or changed by me before this happened..,Network,2,Medium
+autocad crashes while i am working on a drawing. antivirus is not flagging anything but the program still refuses to run..,Software,0,Medium
+the vpn works on the office network but not from home. i changed my password yesterday and the vpn may not know yet.. this started during the morning and has not improved since..,VPN,4,Low
+i need admin rights on the reporting server for migration work. the training platform will not let me enrol in the course.. i have already checked with my colleagues and they are fine..,Access,5,Medium
+wifi disconnects from my laptop every few minutes. i can see the wireless network but it refuses to connect..,Network,2,Low
+the vpn client is not accepting my otp code. i need to reach the payroll system today to finish a task..,VPN,4,Low
+visual studio code cannot find my project folder. the problem appears both on my laptop and on the office desktop.. kindly look at this at the earliest convenience..,Software,0,Medium
+my laptop cannot connect to the office wifi. the access point near my desk seems to be offline.. several of us in the team are affected by the same major issue..,Network,2,Critical
+python script fails with a module not found error. nothing changed on my side and i have not installed anything new.. my manager is copied on this request for visibility..,Software,0,Medium
+the front panel usb ports on my desktop do nothing. it affects the battery life significantly during a normal day of work..,Hardware,1,Low
+the finance system says i do not have permission. i was moved to this team last week and still have no permissions..,Access,5,Low
+the pin for my domain account is rejected at the sign-in prompt. every internal application gives me the same authentication error.. please let me know if you need any further information from my side..,Login,3,Medium
+microsoft word crashes every time i open it. reinstalling the application did not resolve the issue..,Software,0,Medium
+slack notifications stopped arriving on my desktop. it is very slow to load and eventually gives up with an error.. i am in the office today and can be at my desk if needed..,Software,0,Medium
+the bandwidth in the meeting room is unusable for video calls. it affects several of us on the same floor since this morning.. several of us in the team are affected by the same major issue..,Network,2,Critical
+my database client cannot connect to the reporting server. windows event viewer shows an application fault for the same program.. please advise on the next step i should take..,Software,0,Low
+the pdf reader keeps opening in the wrong application. it affects my daily work so i would like this looked at quickly.. i have tried both on the laptop and on the office desktop..,Software,0,Low
+my account gets locked after three login attempts. i need this resolved before the start of the working day.. please resolve this as soon as possible as i am blocked..,Login,3,High
+my laptop screen has a strange blue tint. the problem appears intermittently and then becomes permanent.. please advise on the next step i should take..,Hardware,1,Low
+my keyboard is not responding. the machine reports a disk error and it is very slow to boot.. please resolve this as soon as possible as i am blocked..,Hardware,1,High
+the wiki page returns forbidden for my user account. the access was granted in the previous project space only.. please let me know if you need any further information from my side..,Access,5,Low
+my home router blocks the vpn port and i cannot connect. the client disconnects after roughly fifteen minutes of use.. i am happy to escalate this further if that helps..,VPN,4,Medium
+i am not able to access the design repository. my role in the organisation changed and permissions were not updated.. i can provide remote access if the technician needs it..,Access,5,Low
+i cannot open the restricted customer data folder. the request has been sitting in the approval queue for days.. i have written down everything exactly as it appears on screen..,Access,5,Medium
+i need permission to view the quarterly financial reports. the request has been sitting in the approval queue for days..,Access,5,Low
+my laptop screen has a crack and flickers when opened. i have tried the device on two different machines with no luck.. i am happy to escalate this further if that helps..,Hardware,1,Low
+the wiki page returns forbidden for my user account. the training platform will not let me enrol in the course.. please advise on the next step i should take..,Access,5,Low
+i cannot reach any website from my office desktop. the support page mentions an ongoing issue in this building.. i would appreciate an update once this is resolved..,Network,2,Medium
+i get error 809 when connecting to the vpn. my laptop was reimaged and the vpn profile was never restored.. the problem is reproducible every single time i try..,VPN,4,Medium
+packet loss to the data centre is making my work impossible. i can see the wireless network but it refuses to connect.. the behaviour looks identical to a known issue in the release notes..,Network,2,Medium
+the external hard disk is not detected by my laptop. it affects the battery life significantly during a normal day of work.. this started during the morning and has not improved since..,Hardware,1,Low
+i need approval to access the confidential archive. the application hides the menu option because of my current role.. i am in the office today and can be at my desk if needed..,Access,5,Low
+wifi disconnects from my laptop every few minutes. even the network printer is unreachable from my machine..,Network,2,Low
+my mouse pointer jumps around the screen randomly. the hardware fault appears as soon as i plug in the external device..,Hardware,1,Low
+vpn keeps disconnecting when i connect remotely. my internet connection at home is stable and fast.. i have attached a screenshot of the error message..,VPN,4,Medium
+the wiki page returns forbidden for my user account. the request has been sitting in the approval queue for days.. the it self service portal did not help with this issue..,Access,5,Medium
+i cannot open the restricted customer data folder. everyone else on the team can open the resource without any problem..,Access,5,Medium
+the vpn tunnel drops every fifteen minutes. it worked fine until yesterday and nothing was changed on my machine.. this is affecting my daily work so a quick response would help..,VPN,4,Low
+"my single sign on keeps bouncing between the identity page. the sign-in prompt on my windows machine rejects the domain account.. this is urgent, i cannot work and the department is unavailable..",Login,3,High
+my ethernet connection says media disconnected. the whole floor lost network connectivity for a few minutes..,Network,2,Medium
+my computer makes a clicking noise from the hard disk. i have reseated the cable and tried a different port on the machine..,Hardware,1,Low
+i cannot reach the shared drive through the vpn tunnel. i am behind a home router that may be filtering the traffic.. let me know the earliest time you can look at this..,VPN,4,Medium
+i am asked to change my password but the new one is rejected. it has worked every day until this morning with no changes.. let me know if you need me to try anything else..,Login,3,Low
+the docking station does not connect to any display. the problem appears intermittently and then becomes permanent.. i am happy to escalate this further if that helps..,Hardware,1,Medium
+the bandwidth in the meeting room is unusable for video calls. i tried the network troubleshooter and it did not resolve anything.. the it self service portal did not help with this issue..,Network,2,Medium
+the domain login rejects my account every single time. the sign-in works on the office desktop but not on my laptop.. nothing was installed or changed by me before this happened..,Login,3,Low
+outlook keeps asking for my password again and again. i have cleared the cache and reinstalled the runtime dependencies.. this is affecting my daily work so a quick response would help..,Software,0,Low
+microsoft word crashes every time i open it. the rest of the machine works fine and the internet is normal.. the behaviour looks identical to a known issue in the release notes..,Software,0,Medium
+the office scanner cannot read documents. i have tried the device on two different machines with no luck.. the problem is reproducible every single time i try..,Hardware,1,Medium
+zoom application freezes during screen sharing. the application hangs and i have to force quit it several times a day.. i am in the office today and can be at my desk if needed..,Software,0,Medium
+i cannot open the restricted customer data folder. the resource is shared with me but the permissions are read only.. i have included the exact error text for reference..,Access,5,Medium
+the vpn drops whenever i connect to a conference call. i can connect but every internal website times out.. i tried the obvious steps from the knowledge base first..,VPN,4,Low
+i cannot access the printer queue folder from my laptop. it is a confidential folder so the access has to be approved first.. nothing was installed or changed by me before this happened..,Access,5,Medium
+the two factor authentication app shows an invalid code. the sign-in works on the office desktop but not on my laptop..,Login,3,Low
+my account gets locked after three login attempts. i have been locked out since yesterday evening..,Login,3,Low
+the vpn client crashes immediately after i start it. i get the same problem on my phone with the mobile application..,VPN,4,High
+the pdf reader keeps opening in the wrong application. there is a yellow warning triangle in the corner of the window..,Software,0,Low
+my multi factor authentication code is never accepted. the password field resets itself before i finish typing.. this has been happening intermittently over the last week..,Login,3,Low
+my wired network card is not detected in the system. i hear a clicking or grinding noise coming from the machine.. i am in the office today and can be at my desk if needed..,Hardware,1,Low
+my account gets locked after three login attempts. the two factor code is rejected even when i enter it immediately.. i have included the exact error text for reference..,Login,3,High
+my laptop connects to wifi but has no internet. the problem started after the office network maintenance window..,Network,2,Medium
+network drive disconnects every time i reboot my laptop. nothing on my machine has changed and i have not installed anything..,Network,2,Low
+i cannot log in to my email account. the account works on the phone but not on the computer.. i would appreciate an update once this is resolved..,Login,3,Medium
+my laptop fan makes a very loud noise. the port feels loose and the cable has to be held at an angle.. let me know the earliest time you can look at this..,Hardware,1,Low
+i cannot reach any website from my office desktop. i have tried connecting from home and it works perfectly there.. my manager is copied on this request for visibility..,Network,2,Medium
+i need access to the production database for my project. my user account is not a member of the correct security group.. i would appreciate an update once this is resolved..,Access,5,Low
+sublime text shows an encoding error in every file. it started failing right after the quarterly software rollout.. i tried the obvious steps from the knowledge base first..,Software,0,Medium
+powerpoint freezes when i play a slide transition. this happens with every document i try to open.. this is a complete outage and the entire floor has stopped working..,Software,0,Critical
+the vpn client reports an invalid gateway address. the connection is accepted but no internal host answers.. i have tried both on the laptop and on the office desktop..,VPN,4,Low
+"my login credentials work on the desktop but not on the laptop. every internal application gives me the same authentication error.. this is urgent, i cannot work and the department is unavailable..",Login,3,High
+i need access to the build server for my internship task. everyone else on the team can open the resource without any problem..,Access,5,Medium
+my wired network card is not detected in the system. it happens regardless of which application i am working in.. several of us in the team are affected by the same major issue..,Hardware,1,Critical
+my laptop connects to wifi but has no internet. the connection drops roughly every ten minutes without warning.. the problem is reproducible every single time i try..,Network,2,Medium
+my ethernet connection says media disconnected. the issue seems to come and go throughout the day.. this started during the morning and has not improved since..,Network,2,Medium
+the document i need returns an access denied error. i need to complete an audit that requires these documents.. this is affecting my daily work so a quick response would help..,Access,5,Medium
+i need write access to the shared documentation. the resource is shared with me but the permissions are read only.. i am happy to escalate this further if that helps..,Access,5,Low
+my headset microphone is not picking up my voice. i dropped the device yesterday and it has not worked since.. the problem is reproducible every single time i try..,Hardware,1,Medium

@@ -1,0 +1,431 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =====================================================================
+   BASE
+   ===================================================================== */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-base leading-relaxed text-ink;
+  }
+
+  /* Consistent, visible focus for every interactive element. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-canvas;
+  }
+
+  ::selection {
+    @apply bg-brand-200/70 text-brand-950;
+  }
+
+  /* Slim, unobtrusive scrollbars so long tables and panels feel finished. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-full border-[3px] border-solid border-transparent bg-slate-300 bg-clip-content;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-400 bg-clip-content;
+  }
+}
+
+/* =====================================================================
+   SURFACES
+   ===================================================================== */
+@layer components {
+  .card {
+    @apply rounded-2xl border border-hairline bg-surface shadow-card;
+  }
+
+  /* Interactive card: lifts on hover. Use for clickable panels. */
+  .card-interactive {
+    @apply transition duration-200 ease-smooth hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-card-lg;
+  }
+
+  .card-header {
+    @apply flex flex-wrap items-center justify-between gap-3 border-b border-hairline px-5 py-4 sm:px-6;
+  }
+
+  .card-title {
+    @apply text-[0.9375rem] font-semibold leading-tight tracking-tight text-ink;
+  }
+
+  .card-subtitle {
+    @apply mt-1 text-[0.8125rem] leading-snug text-ink-muted;
+  }
+
+  /* Small uppercase label above a value or list heading. */
+  .micro-label {
+    @apply text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-ink-faint;
+  }
+
+  /* Soft inset panel used for reasons, hints and secondary data. */
+  .panel {
+    @apply rounded-xl border border-hairline bg-slate-50/70 px-4 py-3;
+  }
+
+  /* Neutral chip for counts and metadata. */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-2 py-1 text-[0.6875rem] font-medium text-ink-soft;
+  }
+
+  /* Full-bleed divider that respects the card padding. */
+  .divider {
+    @apply border-t border-hairline;
+  }
+}
+
+/* =====================================================================
+   BUTTONS
+   ===================================================================== */
+@layer components {
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 py-2.5
+           text-sm font-semibold leading-none transition duration-150 ease-smooth
+           disabled:pointer-events-none disabled:opacity-55;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-sm
+           hover:bg-brand-700 hover:shadow-md active:bg-brand-800;
+  }
+
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-surface text-ink-soft shadow-xs
+           hover:border-slate-300 hover:bg-slate-50 hover:text-ink;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-600 text-white shadow-sm hover:bg-rose-700 active:bg-rose-800;
+  }
+
+  .btn-ghost {
+    @apply btn text-ink-muted hover:bg-slate-100 hover:text-ink;
+  }
+
+  /* Gradient variant reserved for the single most important action on a screen. */
+  .btn-hero {
+    @apply btn bg-brand-gradient text-white shadow-md
+           hover:brightness-105 hover:shadow-lg active:brightness-95;
+  }
+
+  .btn-sm {
+    @apply rounded-lg px-3 py-1.5 text-xs;
+  }
+
+  .btn-xs {
+    @apply rounded-lg px-2.5 py-1 text-[0.6875rem];
+  }
+
+  /* Icon-only square button. Always pass an aria-label. */
+  .btn-icon {
+    @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-transparent
+           text-ink-muted transition duration-150 ease-smooth hover:bg-slate-100 hover:text-ink;
+  }
+}
+
+/* =====================================================================
+   FORM CONTROLS
+   ===================================================================== */
+@layer components {
+  .label {
+    @apply mb-1.5 block text-[0.8125rem] font-medium text-ink-soft;
+  }
+
+  .input {
+    @apply block w-full rounded-xl border border-slate-200 bg-surface px-3.5 py-2.5 text-sm text-ink
+           shadow-xs transition duration-150 ease-smooth placeholder:text-ink-faint
+           hover:border-slate-300
+           focus:border-brand-400 focus:bg-surface focus:outline-none focus:ring-4 focus:ring-brand-500/10
+           disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-ink-faint;
+  }
+
+  /* Native select chevron, aligned to the padded right edge. */
+  .select {
+    @apply input cursor-pointer appearance-none bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23667085'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+    background-size: 1.15em 1.15em;
+  }
+
+  .field-error {
+    @apply mt-1.5 flex items-start gap-1 text-xs font-medium text-rose-600;
+  }
+
+  .field-hint {
+    @apply mt-1.5 text-xs leading-snug text-ink-muted;
+  }
+
+  /* Checkbox / radio, sized and coloured to match the inputs above. */
+  .checkbox {
+    @apply mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded border-slate-300 text-brand-600
+           transition focus:ring-2 focus:ring-brand-500/30;
+  }
+
+  /* Search box: icon sits inside the left padding. */
+  .input-search {
+    @apply input pl-10;
+  }
+}
+
+/* =====================================================================
+   BADGES
+   ===================================================================== */
+@layer components {
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[0.6875rem] font-semibold
+           uppercase tracking-[0.04em] ring-1 ring-inset;
+  }
+
+  /* Lowercase variant for prose badges such as "Assigned to you". */
+  .badge-soft {
+    @apply badge normal-case tracking-normal;
+  }
+
+  .badge-dot {
+    @apply h-1.5 w-1.5 rounded-full bg-current opacity-80;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Priority, status and SLA colours.
+
+   Kept as CSS classes rather than Tailwind colour maps because the set is
+   driven by the SRS vocabulary, which the API also exposes via /api/meta.
+   Every badge uses the same soft-fill + deep-text + matching ring recipe so
+   a colour change is a one-line edit per state.
+   --------------------------------------------------------------------- */
+@layer components {
+  /* Priority ---------------------------------------------------------- */
+  .badge-critical {
+    @apply bg-rose-50 text-rose-700 ring-rose-200;
+  }
+
+  .badge-high {
+    @apply bg-orange-50 text-orange-700 ring-orange-200;
+  }
+
+  .badge-medium {
+    @apply bg-amber-50 text-amber-800 ring-amber-200;
+  }
+
+  .badge-low {
+    @apply bg-sky-50 text-sky-700 ring-sky-200;
+  }
+
+  /* Status ------------------------------------------------------------ */
+  .badge-open {
+    @apply bg-slate-100 text-slate-600 ring-slate-300;
+  }
+
+  .badge-in-progress {
+    @apply bg-brand-50 text-brand-700 ring-brand-200;
+  }
+
+  .badge-resolved {
+    @apply bg-emerald-50 text-emerald-700 ring-emerald-200;
+  }
+
+  /* SLA --------------------------------------------------------------- */
+  .badge-breached {
+    @apply bg-rose-50 text-rose-700 ring-rose-200;
+  }
+
+  .badge-near {
+    @apply bg-amber-50 text-amber-800 ring-amber-200;
+  }
+
+  .badge-ok {
+    @apply bg-emerald-50 text-emerald-700 ring-emerald-200;
+  }
+
+  /* Category ---------------------------------------------------------- */
+  .badge-category {
+    @apply bg-accent-50 text-accent-700 ring-accent-200;
+  }
+
+  /* Notification types ------------------------------------------------ */
+  /* Keys match Notification.NOTIFICATION_TYPES in the backend model. */
+  .badge-ticket_created {
+    @apply bg-brand-50 text-brand-700 ring-brand-200;
+  }
+
+  .badge-ticket_assigned {
+    @apply bg-sky-50 text-sky-700 ring-sky-200;
+  }
+
+  .badge-ticket_status {
+    @apply bg-amber-50 text-amber-800 ring-amber-200;
+  }
+
+  .badge-ticket_resolved {
+    @apply bg-emerald-50 text-emerald-700 ring-emerald-200;
+  }
+
+  .badge-sla_warning {
+    @apply bg-orange-50 text-orange-700 ring-orange-200;
+  }
+
+  .badge-sla_breach {
+    @apply bg-rose-50 text-rose-700 ring-rose-200;
+  }
+
+  /* Roles ------------------------------------------------------------- */
+  .badge-role-admin {
+    @apply bg-accent-50 text-accent-700 ring-accent-200;
+  }
+
+  .badge-role-agent {
+    @apply bg-brand-50 text-brand-700 ring-brand-200;
+  }
+
+  .badge-role-employee {
+    @apply bg-slate-100 text-slate-600 ring-slate-300;
+  }
+}
+
+/* =====================================================================
+   TABLES
+   ===================================================================== */
+@layer components {
+  .table {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .table thead th {
+    @apply whitespace-nowrap border-b border-hairline bg-slate-50/80 px-4 py-3
+           text-[0.6875rem] font-semibold uppercase tracking-[0.06em] text-ink-muted;
+  }
+
+  .table tbody td {
+    @apply border-b border-slate-100 px-4 py-3 align-middle text-ink-soft;
+  }
+
+  .table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .table tbody tr.clickable {
+    @apply cursor-pointer transition-colors duration-100 hover:bg-brand-50/40;
+  }
+
+  /* Compact numeric column shared by the report tables. */
+  .num {
+    @apply text-right tabular-nums;
+  }
+}
+
+/* =====================================================================
+   LOADING SKELETONS
+   ===================================================================== */
+@layer components {
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-slate-200/70;
+  }
+
+  .skeleton::after {
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent;
+    content: '';
+    animation: shimmer 1.6s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* =====================================================================
+   AUTH SCREENS
+   ===================================================================== */
+@layer components {
+  .auth-canvas {
+    @apply relative flex min-h-screen items-center justify-center overflow-hidden bg-canvas px-4 py-10;
+  }
+
+  /* Soft brand bloom behind the sign-in and register cards. */
+  .auth-canvas::before {
+    @apply pointer-events-none absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full opacity-70 blur-3xl;
+    background: radial-gradient(circle, rgb(199 214 255 / 0.85) 0%, transparent 65%);
+    content: '';
+  }
+
+  .auth-canvas::after {
+    @apply pointer-events-none absolute -bottom-48 -right-32 h-[32rem] w-[32rem] rounded-full opacity-70 blur-3xl;
+    background: radial-gradient(circle, rgb(228 219 255 / 0.85) 0%, transparent 65%);
+    content: '';
+  }
+}
+
+/* =====================================================================
+   PRINT — Analytics is designed to be exported as a PDF report.
+   ===================================================================== */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Chrome that has no place on paper. */
+  aside,
+  header[data-app-header='true'],
+  footer,
+  .no-print,
+  button {
+    display: none !important;
+  }
+
+  main,
+  .print-full {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  .card {
+    break-inside: avoid;
+    border: 1px solid #d0d5dd !important;
+    box-shadow: none !important;
+  }
+
+  .print-break {
+    break-before: page;
+  }
+
+  /* Charts and tables are the report payload; never let them clip. */
+  .recharts-wrapper,
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
