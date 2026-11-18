@@ -208,7 +208,17 @@ class TicketClassifier:
         self._predict_calls = 0
         self._fallback_calls = 0
 
-        self.load()
+     # Lightweight deployment mode for memory-limited instances such as
+        # Render Free. When enabled, do not download or load DistilBERT; use
+        # the explicitly identified keyword fallback instead.
+        skip_model_load = os.getenv("ML_SKIP_MODEL_LOAD", "False").strip().lower() in (
+            "1", "true", "yes", "on"
+        )
+        if skip_model_load:
+            self._load_error = "Model loading skipped by ML_SKIP_MODEL_LOAD."
+            logger.warning("DistilBERT loading skipped. Using keyword fallback.")
+        else:
+            self.load()
 
     # -- loading ----------------------------------------------------------
     def load(self) -> bool:
