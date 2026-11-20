@@ -1,0 +1,18 @@
+{
+    "id_to_label": {
+        "0": "Software",
+        "1": "Hardware",
+        "2": "Network",
+        "3": "Login",
+        "4": "VPN",
+        "5": "Access"
+    },
+    "label_to_id": {
+        "Access": 5,
+        "Hardware": 1,
+        "Login": 3,
+        "Network": 2,
+        "Software": 0,
+        "VPN": 4
+    }
+}

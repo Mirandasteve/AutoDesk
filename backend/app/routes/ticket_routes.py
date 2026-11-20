@@ -107,8 +107,13 @@ def create_ticket():
             max_length=config["TICKET_DESCRIPTION_MAX_LENGTH"],
             min_length=10,
         )
+        classification = payload.get("classification")
+
         ticket, analysis = ticket_service.create_ticket(
-            creator=user, title=title, description=description
+            creator=user,
+            title=title,
+            description=description,
+            classification=classification,
         )
     except ValidationError as exc:
         return validation_error(exc.message, exc.fields)
@@ -502,7 +507,13 @@ def lookup():
     except ValidationError as exc:
         return validation_error(exc.message, exc.fields)
 
-    analysis = ticket_service.analyse(text, title=title)
+    classification = payload.get("classification")
+
+    analysis = ticket_service.analyse(
+        text,
+        title=title,
+        classification=classification,
+    )
     return success_response(
         {
             "category": analysis["category"],
@@ -596,3 +607,4 @@ def notification_history(ticket_id: int) -> List:
     from app.services import notification_service
 
     return notification_service.recent_for_ticket(ticket_id, limit=20)
+

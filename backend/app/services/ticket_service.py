@@ -22,6 +22,7 @@ style with bound parameters (SRS section 6). No string-built SQL, no
 from __future__ import annotations
 
 import logging
+import math
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Sequence, Tuple
 
@@ -30,7 +31,7 @@ from sqlalchemy.orm import Session
 
 from app.extensions import db
 from app.ml import predictor
-from app.models.ticket import ALLOWED_TRANSITIONS, STATUSES, Ticket
+from app.models.ticket import ALLOWED_TRANSITIONS, CATEGORIES, STATUSES, Ticket
 from app.models.user import User
 from app.services import email_service, notification_service, sla_service
 from app.services.priority_engine import predict_priority
@@ -85,30 +86,129 @@ def _priority_sort_expression():
 # ---------------------------------------------------------------------------
 # The intelligent pipeline
 # ---------------------------------------------------------------------------
-def analyse(text: str, title: str = "") -> Dict[str, Any]:
+
+# ---------------------------------------------------------------------------
+# The intelligent pipeline
+# ---------------------------------------------------------------------------
+
+def _validate_browser_classification(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Validate and normalize a classification produced by the browser."""
+
+    if not isinstance(data, dict):
+        raise ValidationError("Invalid browser classification.")
+
+    category = data.get("category")
+
+    if not isinstance(category, str) or category not in CATEGORIES:
+        raise ValidationError(
+            "The predicted ticket category is invalid.",
+            {"category": "Choose one of the supported categories."},
+        )
+
+    confidence = data.get("confidence")
+
+    if isinstance(confidence, bool):
+        raise ValidationError("Invalid classification confidence.")
+
+    try:
+        confidence = float(confidence)
+    except (TypeError, ValueError):
+        raise ValidationError("Invalid classification confidence.")
+
+    if not math.isfinite(confidence) or not 0 <= confidence <= 1:
+        raise ValidationError(
+            "Classification confidence must be between 0 and 1."
+        )
+
+    # Do not trust model/source identifiers supplied by the browser.
+    result = {
+        "category": category,
+        "confidence": confidence,
+        "confidence_pct": round(confidence * 100, 2),
+        "source": "distilbert-browser",
+        "model": "autodesk-ticket-classifier-onnx-int8",
+        "is_fallback": False,
+    }
+
+    top_k = data.get("top_k", [])
+
+    if not isinstance(top_k, list) or len(top_k) > len(CATEGORIES):
+        raise ValidationError("Invalid classification candidate list.")
+
+    normalized_top_k = []
+
+    for item in top_k:
+        if not isinstance(item, dict):
+            raise ValidationError("Invalid classification candidate.")
+
+        candidate_category = item.get("category")
+        candidate_score = item.get("confidence")
+
+        if (
+            not isinstance(candidate_category, str)
+            or candidate_category not in CATEGORIES
+        ):
+            raise ValidationError("Invalid classification candidate category.")
+
+        if isinstance(candidate_score, bool):
+            raise ValidationError(
+                "Invalid classification candidate confidence."
+            )
+
+        try:
+            candidate_score = float(candidate_score)
+        except (TypeError, ValueError):
+            raise ValidationError(
+                "Invalid classification candidate confidence."
+            )
+
+        if (
+            not math.isfinite(candidate_score)
+            or not 0 <= candidate_score <= 1
+        ):
+            raise ValidationError(
+                "Invalid classification candidate confidence."
+            )
+
+        normalized_top_k.append({
+            "category": candidate_category,
+            "confidence": candidate_score,
+            "confidence_pct": round(candidate_score * 100, 2),
+        })
+
+    result["top_k"] = normalized_top_k
+
+    return result
+
+
+def analyse(
+    text: str,
+    title: str = "",
+    classification: Optional[Dict[str, Any]] = None,
+) -> Dict[str, Any]:
     """
     Run the AI / rule pipeline over a ticket and return the decisions.
 
-    Pure function - it does not touch the database - which makes it easy to
-    unit test and to reuse for previews.
-
-    Returns::
-
-        {
-          "category": "Network",
-          "confidence": 0.986,
-          "classification": {... full classifier payload ...},
-          "priority": "High",
-          "priority_analysis": {... full priority-engine payload ...},
-          "assigned_team": "Network Team",
-        }
+    The browser classification is used when supplied. Otherwise, the
+    existing Python predictor remains available as a fallback.
     """
-    # The classifier sees title + description: employees often put the decisive
-    # keyword ("VPN", "urgent") in the title only.
-    combined = " ".join(part for part in (title, text) if part).strip()
 
-    classification = predictor.predict_category(combined or text)
-    priority_analysis = predict_priority(description=text, title=title)
+    # The classifier sees title + description.
+    combined = " ".join(
+        part for part in (title, text) if part
+    ).strip()
+
+    if classification is not None:
+        classification = _validate_browser_classification(classification)
+    else:
+        classification = predictor.predict_category(combined or text)
+
+    # Priority and team routing remain server-side.
+    priority_analysis = predict_priority(
+        description=text,
+        title=title,
+    )
+
     category = classification.get("category")
     assigned_team = route_ticket(category) if category else None
 
@@ -127,41 +227,47 @@ def create_ticket(
     title: str,
     description: str,
     *,
+    classification: Optional[Dict[str, Any]] = None,
     send_notifications: bool = True,
 ) -> Tuple[Ticket, Dict[str, Any]]:
     """
     Full ticket-creation pipeline.
 
-    Returns ``(ticket, analysis)`` where *analysis* is what the employee sees
-    in the "AI Analysis Complete" card.
+    Returns (ticket, analysis).
     """
+
     started = datetime.now(timezone.utc)
 
-    # 1 + 2. DistilBERT category prediction
-    analysis = analyse(description, title=title)
+    # 1. AI classification
+    analysis = analyse(
+        description,
+        title=title,
+        classification=classification,
+    )
+
     category = analysis["category"]
+
     if not category:
-        # The classifier could not produce a category at all (empty input or a
-        # hard model failure with fallback disabled).
         raise ValidationError(
-            "The ticket description could not be analysed. Please add more detail and try again.",
+            "The ticket description could not be analysed. "
+            "Please add more detail and try again.",
             {"description": "Add a little more detail about the problem."},
         )
 
-    # 3. Priority engine (independent of the classifier - SRS section 12)
+    # 2. Priority calculation
     priority = analysis["priority"]
 
-    # 4. Routing engine (SRS section 7)
+    # 3. Team routing
     assigned_team = analysis["assigned_team"]
 
-    classification = analysis["classification"]
+    classification_result = analysis["classification"]
     priority_analysis = analysis["priority_analysis"]
 
-    # 5. SLA deadline, computed once from the priority
+    # 4. SLA deadline
     created_at = datetime.now(timezone.utc)
     sla_due_at = sla_service.compute_due_at(created_at, priority)
 
-    # 6. Persist
+    # 5. Persist ticket
     ticket = Ticket(
         title=title.strip(),
         description=description.strip(),
@@ -172,27 +278,29 @@ def create_ticket(
         created_by=creator.id,
         assigned_to=None,
         sla_due_at=sla_due_at,
-        classification_confidence=classification.get("confidence"),
-        classification_source=classification.get("source"),
-        ml_model=classification.get("model"),
+        classification_confidence=classification_result.get("confidence"),
+        classification_source=classification_result.get("source"),
+        ml_model=classification_result.get("model"),
         priority_reason=priority_analysis.get("explanation"),
         created_at=created_at,
     )
 
-    # Auto-assign to an agent on the owning team so the agent dashboard has a
-    # real "assigned to" value on day one.
+    # Automatically assign an agent from the owning team.
     ticket.assigned_to = _pick_agent(assigned_team)
 
     db.session.add(ticket)
-    db.session.flush()  # assigns ticket.id without committing
+    db.session.flush()
 
-    # 7. Notifications + email (best effort; never fails the request)
+    # 6. Notifications and email
     if send_notifications:
         _dispatch_new_ticket(ticket)
 
     db.session.commit()
 
-    elapsed = (datetime.now(timezone.utc) - started).total_seconds() * 1000
+    elapsed = (
+        datetime.now(timezone.utc) - started
+    ).total_seconds() * 1000
+
     logger.info(
         "Ticket #%s created: %s/%s -> %s (%.0f ms, source=%s)",
         ticket.id,
@@ -200,13 +308,15 @@ def create_ticket(
         priority,
         assigned_team,
         elapsed,
-        classification.get("source"),
+        classification_result.get("source"),
     )
 
     analysis = dict(analysis)
     analysis["processing_ms"] = round(elapsed, 1)
     analysis["sla"] = sla_service.describe_sla(ticket)
+
     return ticket, analysis
+
 
 
 def _pick_agent(team: str) -> Optional[int]:

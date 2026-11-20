@@ -11,10 +11,11 @@
     "lint": "echo \"No linter configured; see README.md\" && exit 0"
   },
   "dependencies": {
+    "@huggingface/transformers": "^4.3.2",
+    "axios": "^1.7.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.1",
-    "axios": "^1.7.9",
     "recharts": "^2.15.0"
   },
   "devDependencies": {

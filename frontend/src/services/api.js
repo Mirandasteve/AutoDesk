@@ -137,8 +137,12 @@ export const ticketApi = {
   addNotes: (id, notes) =>
     request({ method: 'post', url: `/tickets/${id}/notes`, data: { notes } }),
   metadata: () => request({ method: 'get', url: '/tickets/metadata' }),
-  lookup: (description, title) =>
-    request({ method: 'post', url: '/tickets/lookup', data: { description, title } }),
+  lookup: (description, title, classification) =>
+  request({
+    method: 'post',
+    url: '/tickets/lookup',
+    data: { description, title, classification },
+  }),
   claim: (id) => request({ method: 'post', url: `/tickets/${id}/claim` }),
 }
 

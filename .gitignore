@@ -104,3 +104,5 @@ scratch/
 *.bak
 *.orig
 *.rej
+# Local ONNX export files
+backend/onnx-export/
